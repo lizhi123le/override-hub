@@ -3,7 +3,7 @@ proxy-groups:
     type: select
     proxies:
       - ♻️ 自动选择
-      - ⚖️ 散列均衡
+      - ️⚖️ 散列均衡
       - 🇭🇰 香港节点
       - 🇨🇳 台湾节点
       - 🇸🇬 狮城节点
