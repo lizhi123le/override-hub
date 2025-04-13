@@ -17,7 +17,18 @@ proxy-groups:
   - name: ♻️ 自动选择
     type: url-test
     include-all: true
-    interval: 300
+    interval: 420
+    tolerance: 50
+  - name: ️⚖️ 散列均衡
+    type: load-balance
+    strategy: consistent-hashing
+    include-all: true
+    interval: 420
+    tolerance: 50
+  - name: 🔯 故障转移
+    type: fallback
+    include-all: true
+    interval: 420
     tolerance: 50
   - name: 📲 电报消息
     type: select
@@ -198,6 +209,11 @@ proxy-groups:
     proxies:
       - REJECT
       - DIRECT
+  - name: 🆎 adrules
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
   - name: 🍃 应用净化
     type: select
     proxies:
@@ -279,6 +295,14 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  adrules:
+    url: https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules.list
+    path: ./ruleset/adrules.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  
   BanProgramAD:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list
     path: ./ruleset/BanProgramAD.list
@@ -473,6 +497,7 @@ rules:
   - "RULE-SET,LocalAreaNetwork,🎯 全球直连"
   - "RULE-SET,UnBan,🎯 全球直连"
   - "RULE-SET,BanAD,🛑 广告拦截"
+  - "RULE-SET,adrules,🆎 adrules"
   - "RULE-SET,BanProgramAD,🍃 应用净化"
   - "RULE-SET,GoogleFCM,📢 谷歌FCM"
   - "RULE-SET,GoogleCN,🎯 全球直连"
