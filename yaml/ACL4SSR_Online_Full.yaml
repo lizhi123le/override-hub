@@ -22,7 +22,7 @@ proxy-groups:
     tolerance: 50
   - name: ️⚖️ 散列均衡
     type: load-balance
-    strategy: consistent-hashing
+    strategy: sticky-sessions
     include-all: true
     interval: 420
     tolerance: 50
